@@ -1,236 +1,186 @@
-// =========================================
-// KONFIGURASI SUPABASE
-// =========================================
+/* ========================================
+   AMBIL ELEMEN HTML
+======================================== */
 
-const supabaseUrl = "https://lzbsdivuijcxeaedngpo.supabase.co";
+const body = document.body;
+const themeButton = document.querySelector("#toggleTheme");
+const menuToggle = document.querySelector("#menuToggle");
+const navLinks = document.querySelector("#navLinks");
+const navItems = document.querySelectorAll(".nav-link");
+const formKontak = document.querySelector("#formKontak");
+const formMessage = document.querySelector("#formMessage");
+const yearElement = document.querySelector("#year");
+const navbar = document.querySelector(".navbar");
 
-const supabaseKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXAiLCJpYXQiOjE3ODY0OTM4NDgsImV4cCI6MjEwMjA2OTg0OH0.pC4gbrke-v9kbO-I82qNSz8xD8Fm9SAcOreRgQIjb90";
+/* ========================================
+   TAHUN FOOTER
+======================================== */
 
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
 
-// =========================================
-// DARK MODE / MODE MALAM
-// =========================================
+/* ========================================
+   DARK MODE
+======================================== */
 
-const toggleTheme = document.getElementById("toggleTheme");
+const savedTheme = localStorage.getItem("portfolio-theme");
 
-if (toggleTheme) {
-    toggleTheme.addEventListener("click", function () {
-        document.body.classList.toggle("dark-mode");
+if (savedTheme === "dark") {
+    body.classList.add("dark-mode");
 
-        const darkModeAktif =
-            document.body.classList.contains("dark-mode");
+    if (themeButton) {
+        themeButton.textContent = "☀️";
+    }
+} else {
+    body.classList.remove("dark-mode");
 
-        toggleTheme.textContent = darkModeAktif
-            ? "☀️"
-            : "🌙";
+    if (themeButton) {
+        themeButton.textContent = "🌙";
+    }
+}
 
-        toggleTheme.setAttribute(
+if (themeButton) {
+    themeButton.addEventListener("click", function () {
+        body.classList.toggle("dark-mode");
+
+        const isDarkMode = body.classList.contains("dark-mode");
+
+        themeButton.textContent = isDarkMode ? "☀️" : "🌙";
+
+        localStorage.setItem(
+            "portfolio-theme",
+            isDarkMode ? "dark" : "light"
+        );
+    });
+}
+
+/* ========================================
+   MENU MOBILE
+======================================== */
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("open");
+
+        const isOpen = navLinks.classList.contains("open");
+
+        menuToggle.textContent = isOpen ? "✕" : "☰";
+        menuToggle.setAttribute(
             "aria-label",
-            darkModeAktif
-                ? "Aktifkan mode terang"
-                : "Aktifkan mode malam"
+            isOpen ? "Tutup menu" : "Buka menu"
         );
     });
 }
 
+navItems.forEach(function (item) {
+    item.addEventListener("click", function () {
+        navLinks.classList.remove("open");
 
-// =========================================
-// SKILL
-// =========================================
-
-const daftarSkill = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "MySQL"
-];
-
-const skillsContainer =
-    document.getElementById("skills-container");
-
-if (skillsContainer) {
-    skillsContainer.innerHTML = "";
-
-    daftarSkill.forEach(function (skill) {
-        const badge = document.createElement("span");
-
-        badge.className = "skill-badge";
-        badge.textContent = skill;
-
-        skillsContainer.appendChild(badge);
+        if (menuToggle) {
+            menuToggle.textContent = "☰";
+            menuToggle.setAttribute("aria-label", "Buka menu");
+        }
     });
-}
+});
 
+/* ========================================
+   NAVBAR SAAT SCROLL
+======================================== */
 
-// =========================================
-// MENAMPILKAN PROYEK DARI SUPABASE
-// =========================================
-
-const proyekContainer =
-    document.getElementById("proyek-container");
-
-async function tampilkanProyek() {
-    if (!proyekContainer) {
-        return;
+window.addEventListener("scroll", function () {
+    if (window.scrollY > 30) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
     }
+});
 
-    proyekContainer.textContent = "Memuat proyek...";
+/* ========================================
+   ANIMASI REVEAL SAAT SCROLL
+======================================== */
 
-    try {
-        const response = await fetch(
-            `${supabaseUrl}/rest/v1/proyek?select=judul,deskripsi,gambar_url&order=id.desc`,
-            {
-                method: "GET",
-                headers: {
-                    apikey: supabaseKey,
-                    Authorization: `Bearer ${supabaseKey}`
-                }
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+    function (entries, observer) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
             }
-        );
-
-        if (!response.ok) {
-            throw new Error(
-                `Gagal mengambil proyek: HTTP ${response.status}`
-            );
-        }
-
-        const daftarProyek = await response.json();
-
-        proyekContainer.innerHTML = "";
-
-        if (daftarProyek.length === 0) {
-            proyekContainer.textContent = "Belum ada proyek.";
-            return;
-        }
-
-        daftarProyek.forEach(function (proyek) {
-            const card = document.createElement("article");
-            card.className = "project-card";
-
-            const judul = document.createElement("h3");
-            judul.textContent = proyek.judul || "Tanpa judul";
-
-            const deskripsi = document.createElement("p");
-            deskripsi.textContent =
-                proyek.deskripsi || "Tidak ada deskripsi.";
-
-            card.appendChild(judul);
-            card.appendChild(deskripsi);
-
-            if (proyek.gambar_url) {
-                const iframe = document.createElement("iframe");
-
-                const driveMatch = proyek.gambar_url.match(
-                    /drive\.google\.com\/file\/d\/([^/]+)/
-                );
-
-                const presentationMatch = proyek.gambar_url.match(
-                    /docs\.google\.com\/presentation\/d\/([^/]+)/
-                );
-
-                if (driveMatch) {
-                    iframe.src =
-                        `https://drive.google.com/file/d/${driveMatch[1]}/preview`;
-                } else if (presentationMatch) {
-                    iframe.src =
-                        `https://docs.google.com/presentation/d/${presentationMatch[1]}/embed`;
-                } else {
-                    iframe.src = proyek.gambar_url;
-                }
-
-                iframe.title =
-                    `Pratinjau ${proyek.judul || "proyek"}`;
-
-                iframe.width = "100%";
-                iframe.height = "300";
-                iframe.loading = "lazy";
-                iframe.allowFullscreen = true;
-                iframe.setAttribute("frameborder", "0");
-
-                card.appendChild(iframe);
-            }
-
-            proyekContainer.appendChild(card);
         });
-
-    } catch (error) {
-        console.error(error);
-        proyekContainer.textContent =
-            "Proyek gagal dimuat.";
+    },
+    {
+        threshold: 0.12
     }
-}
+);
 
-tampilkanProyek();
+revealElements.forEach(function (element) {
+    revealObserver.observe(element);
+});
 
+/* ========================================
+   NAV LINK AKTIF SESUAI SECTION
+======================================== */
 
-// =========================================
-// FORM KONTAK
-// =========================================
+const sections = document.querySelectorAll("section, header");
 
-const formKontak =
-    document.getElementById("formKontak");
+const sectionObserver = new IntersectionObserver(
+    function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                const currentId = entry.target.getAttribute("id");
 
-const namaInput =
-    document.getElementById("namaInput");
+                navItems.forEach(function (link) {
+                    link.classList.remove("active");
 
-if (formKontak && namaInput) {
-    formKontak.addEventListener("submit", async function (event) {
+                    if (link.getAttribute("href") === "#" + currentId) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    },
+    {
+        rootMargin: "-35% 0px -55% 0px"
+    }
+);
+
+sections.forEach(function (section) {
+    if (section.id) {
+        sectionObserver.observe(section);
+    }
+});
+
+/* ========================================
+   FORM KONTAK
+======================================== */
+
+if (formKontak) {
+    formKontak.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const nama = namaInput.value.trim();
+        const nama = document.querySelector("#namaInput").value.trim();
+        const email = document.querySelector("#emailInput").value.trim();
+        const pesan = document.querySelector("#pesanInput").value.trim();
 
-        if (nama === "") {
-            alert("Nama wajib diisi!");
-            namaInput.focus();
+        if (!nama || !email || !pesan) {
+            formMessage.textContent = "Mohon isi semua kolom terlebih dahulu.";
+            formMessage.style.color = "#ef4444";
+            formMessage.classList.add("show");
             return;
         }
 
-        const tombolKirim =
-            formKontak.querySelector('button[type="submit"]');
+        formMessage.textContent =
+            "Pesan berhasil disiapkan. Terima kasih, " + nama + "!";
+        formMessage.style.color = "#22a06b";
+        formMessage.classList.add("show");
 
-        if (tombolKirim) {
-            tombolKirim.disabled = true;
-            tombolKirim.textContent = "Mengirim...";
-        }
+        formKontak.reset();
 
-        try {
-            const response = await fetch(
-                `${supabaseUrl}/rest/v1/pesan`,
-                {
-                    method: "POST",
-                    headers: {
-                        apikey: supabaseKey,
-                        Authorization: `Bearer ${supabaseKey}`,
-                        "Content-Type": "application/json",
-                        Prefer: "return=minimal"
-                    },
-                    body: JSON.stringify({
-                        nama: nama
-                    })
-                }
-            );
-
-            if (!response.ok) {
-                throw new Error(
-                    `Gagal mengirim pesan: HTTP ${response.status}`
-                );
-            }
-
-            alert(`Pesan berhasil dikirim, ${nama}!`);
-            formKontak.reset();
-
-        } catch (error) {
-            console.error(error);
-            alert(
-                "Pesan gagal dikirim. Periksa koneksi atau pengaturan Supabase."
-            );
-
-        } finally {
-            if (tombolKirim) {
-                tombolKirim.disabled = false;
-                tombolKirim.textContent = "Kirim";
-            }
-        }
+        setTimeout(function () {
+            formMessage.classList.remove("show");
+        }, 5000);
     });
 }

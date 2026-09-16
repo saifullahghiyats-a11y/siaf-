@@ -3,245 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio pribadi Saif Gyiyats Al Khair, mahasiswa informatika.">
+    <title>Portfolio | Saif Gyiyats Al Khair</title>
 
-    <title>Saif Gyiyats Al Khair - Portfolio</title>
-
-    <!-- Menghubungkan file CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <!-- NAVBAR -->
     <nav class="navbar">
-        <div class="logo">Portfolio Saya</div>
+        <div class="container nav-container">
+            <a href="#beranda" class="logo">
+                Saif<span>.</span>
+            </a>
 
-        <ul class="nav-links">
-            <li><a href="#beranda">Beranda</a></li>
-            <li><a href="#tentang">Tentang</a></li>
-            <li><a href="#skills">Keahlian</a></li>
-            <li><a href="#proyek">Proyek</a></li>
-            <li><a href="#hobi">Hobi</a></li>
-            <li><a href="#kontak">Kontak</a></li>
-        </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+                ☰
+            </button>
 
-        <button id="toggleTheme" aria-label="Ganti Tema">🌙</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+                <li><a href="#tentang" class="nav-link">Tentang</a></li>
+                <li><a href="#keahlian" class="nav-link">Keahlian</a></li>
+                <li><a href="#proyek" class="nav-link">Proyek</a></li>
+                <li><a href="#kontak" class="nav-link">Kontak</a></li>
+            </ul>
+
+            <button id="toggleTheme" class="theme-button" aria-label="Ganti tema">
+                🌙
+            </button>
+        </div>
     </nav>
-
 
     <!-- HERO -->
     <header class="hero" id="beranda">
+        <div class="container hero-container">
 
-        <img
-            src="foto saya.jpeg"
-            alt="Foto Profil Saif Gyiyats Al Khair"
-            class="foto-profil"
-        >
+            <div class="hero-content reveal">
+                <p class="hero-label">HALO, SAYA</p>
 
-        <div class="hero-text">
-            <h1>Saif Gyiyats Al Khair</h1>
-            <p>Mahasiswa Informatika</p>
-            <p>
-                Selamat datang di website portfolio pribadi saya.
-            </p>
+                <h1>
+                    Saif Gyiyats
+                    <span>Al Khair</span>
+                </h1>
+
+                <h2>Mahasiswa Informatika & Calon Web Developer</h2>
+
+                <p class="hero-description">
+                    Saya sedang mempelajari dunia teknologi, pemrograman,
+                    dan pengembangan website untuk menciptakan karya digital
+                    yang bermanfaat dan menarik.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#proyek" class="button primary-button">
+                        Lihat Proyek
+                        <span>→</span>
+                    </a>
+
+                    <a href="#kontak" class="button secondary-button">
+                        Hubungi Saya
+                    </a>
+                </div>
+
+                <div class="hero-social">
+                    <span>Temukan saya di</span>
+                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </div>
+            </div>
+
+            <div class="hero-image-wrapper reveal">
+                <div class="image-decoration decoration-one"></div>
+                <div class="image-decoration decoration-two"></div>
+
+                <div class="profile-card">
+                    <div class="profile-status">
+                        <span></span>
+                        Available to learn
+                    </div>
+
+                    <img
+                        src="foto saya.jpeg"
+                        alt="Foto profil Saif Gyiyats Al Khair"
+                        class="profile-image"
+                    >
+
+                    <div class="profile-card-bottom">
+                        <div>
+                            <strong>Saif Gyiyats</strong>
+                            <small>Informatics Student</small>
+                        </div>
+                        <div class="profile-symbol">&lt;/&gt;</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
+        <div class="scroll-down">
+            <span></span>
+            Gulir ke bawah
+        </div>
     </header>
 
+    <!-- TENTANG -->
+    <section class="section about-section" id="tentang">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="section-label">TENTANG SAYA</p>
+                <h2>Mengenal saya lebih dekat</h2>
+                <p>
+                    Sedikit cerita tentang diri saya, minat saya,
+                    dan perjalanan saya di bidang teknologi.
+                </p>
+            </div>
 
-    <!-- TENTANG SAYA -->
-    <section class="tentang-section" id="tentang">
-        <h2>Tentang Saya</h2>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>
+                        Saya adalah mahasiswa informatika yang memiliki
+                        ketertarikan pada teknologi dan pengembangan website.
+                        Saat ini saya terus mengembangkan kemampuan dalam
+                        HTML, CSS, JavaScript, serta dasar-dasar pemrograman.
+                    </p>
 
-        <p>
-            Halo, saya <strong>Saif Gyiyats Al Khair</strong>,
-            seorang mahasiswa Informatika yang memiliki ketertarikan
-            terhadap teknologi, pemrograman, dan pengembangan website.
-        </p>
+                    <p>
+                        Bagi saya, belajar teknologi bukan hanya tentang
+                        menulis kode, tetapi juga tentang membuat solusi
+                        yang mudah digunakan, bermanfaat, dan memiliki
+                        tampilan yang baik.
+                    </p>
 
-        <p>
-            Saya terus belajar dan mengembangkan kemampuan di bidang
-            teknologi informasi untuk menciptakan karya yang bermanfaat.
-        </p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <span class="info-icon">🎓</span>
+                            <div>
+                                <small>Status</small>
+                                <strong>Mahasiswa Informatika</strong>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div>
+                                <small>Domisili</small>
+                                <strong>Indonesia</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-highlight reveal">
+                    <div class="highlight-icon">💡</div>
+                    <h3>Terus belajar dan berkembang</h3>
+                    <p>
+                        Saya percaya bahwa kemampuan akan bertumbuh
+                        melalui latihan, pengalaman, dan konsistensi.
+                    </p>
+
+                    <div class="highlight-line"></div>
+
+                    <span>Learning by doing</span>
+                </div>
+            </div>
+        </div>
     </section>
-
 
     <!-- KEAHLIAN -->
-    <section class="skills-section" id="skills">
-        <h2>Keahlian</h2>
-
-        <div class="skills">
-            <div class="skill-card">
-                <h3>HTML</h3>
-                <span class="skill-badge">Struktur Website</span>
+    <section class="section skills-section" id="keahlian">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="section-label">KEAHLIAN</p>
+                <h2>Teknologi yang sedang saya pelajari</h2>
+                <p>
+                    Beberapa teknologi dan kemampuan yang saya gunakan
+                    dalam proses belajar dan membuat proyek.
+                </p>
             </div>
 
-            <div class="skill-card">
-                <h3>CSS</h3>
-                <span class="skill-badge">Desain Website</span>
-            </div>
+            <div class="skills-grid">
+                <div class="skill-card reveal">
+                    <div class="skill-top">
+                        <span class="skill-number">01</span>
+                        <span class="skill-icon html-icon">&lt;/&gt;</span>
+                    </div>
+                    <h3>HTML</h3>
+                    <p>Membuat struktur halaman website yang teratur dan semantik.</p>
+                    <div class="skill-progress">
+                        <span style="width: 85%;"></span>
+                    </div>
+                    <small>Dasar hingga menengah</small>
+                </div>
 
-            <div class="skill-card">
-                <h3>JavaScript</h3>
-                <span class="skill-badge">Interaksi Website</span>
-            </div>
+                <div class="skill-card reveal">
+                    <div class="skill-top">
+                        <span class="skill-number">02</span>
+                        <span class="skill-icon css-icon">✦</span>
+                    </div>
+                    <h3>CSS</h3>
+                    <p>Mengatur tampilan, layout, warna, responsivitas, dan animasi.</p>
+                    <div class="skill-progress">
+                        <span style="width: 80%;"></span>
+                    </div>
+                    <small>Dasar hingga menengah</small>
+                </div>
 
-            <div class="skill-card">
-                <h3>MySQL</h3>
-                <span class="skill-badge">Database</span>
+                <div class="skill-card reveal">
+                    <div class="skill-top">
+                        <span class="skill-number">03</span>
+                        <span class="skill-icon js-icon">JS</span>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Membuat halaman website menjadi interaktif dan dinamis.</p>
+                    <div class="skill-progress">
+                        <span style="width: 65%;"></span>
+                    </div>
+                    <small>Sedang dipelajari</small>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-top">
+                        <span class="skill-number">04</span>
+                        <span class="skill-icon db-icon">▦</span>
+                    </div>
+                    <h3>MySQL</h3>
+                    <p>Mempelajari pengelolaan dan penyimpanan data menggunakan database.</p>
+                    <div class="skill-progress">
+                        <span style="width: 55%;"></span>
+                    </div>
+                    <small>Sedang dipelajari</small>
+                </div>
             </div>
         </div>
     </section>
-
 
     <!-- PROYEK -->
-    <section class="proyek-section" id="proyek">
-        <h2>Proyek Saya</h2>
-
-        <div class="projects">
-
-            <article class="project-card">
-                <div class="no-image">
-                    Proyek 1
-                </div>
-
-                <h3>Website Portfolio</h3>
-
+    <section class="section projects-section" id="proyek">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="section-label">PROYEK</p>
+                <h2>Beberapa karya saya</h2>
                 <p>
-                    Website portfolio pribadi yang dibuat menggunakan
-                    HTML, CSS, dan JavaScript.
+                    Contoh proyek yang pernah saya buat atau sedang
+                    saya kembangkan selama belajar.
                 </p>
-            </article>
+            </div>
 
-            <article class="project-card">
-                <div class="no-image">
-                    Proyek 2
-                </div>
+            <div class="projects-grid">
+                <article class="project-card reveal">
+                    <div class="project-preview portfolio-preview">
+                        <div class="preview-window">
+                            <div class="preview-header">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="preview-content">
+                                <div class="preview-sidebar"></div>
+                                <div class="preview-main">
+                                    <div class="preview-line large"></div>
+                                    <div class="preview-line"></div>
+                                    <div class="preview-boxes">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <h3>Website Informasi</h3>
+                    <div class="project-content">
+                        <span class="project-category">Website</span>
+                        <h3>Personal Portfolio</h3>
+                        <p>
+                            Website portfolio pribadi untuk memperkenalkan
+                            diri, keahlian, dan proyek yang saya kerjakan.
+                        </p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </article>
 
-                <p>
-                    Website sederhana untuk menampilkan informasi
-                    secara rapi dan responsif.
-                </p>
-            </article>
+                <article class="project-card reveal">
+                    <div class="project-preview campus-preview">
+                        <div class="campus-shape">
+                            <span>🎓</span>
+                            <strong>Campus</strong>
+                            <small>Information Website</small>
+                        </div>
+                    </div>
 
-            <article class="project-card">
-                <div class="no-image">
-                    Proyek 3
-                </div>
+                    <div class="project-content">
+                        <span class="project-category">Landing Page</span>
+                        <h3>Website Informasi Kampus</h3>
+                        <p>
+                            Konsep halaman website untuk memperkenalkan
+                            informasi kampus kepada calon mahasiswa.
+                        </p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>UI Design</span>
+                        </div>
+                    </div>
+                </article>
 
-                <h3>Desain Web</h3>
+                <article class="project-card reveal">
+                    <div class="project-preview dashboard-preview">
+                        <div class="dashboard-shape">
+                            <div class="dashboard-top"></div>
+                            <div class="dashboard-content">
+                                <div class="dashboard-chart"></div>
+                                <div class="dashboard-list">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <p>
-                    Proyek desain antarmuka website dengan tampilan
-                    modern dan mudah digunakan.
-                </p>
-            </article>
-
+                    <div class="project-content">
+                        <span class="project-category">Eksperimen</span>
+                        <h3>Dashboard Sederhana</h3>
+                        <p>
+                            Eksperimen membuat tampilan dashboard dengan
+                            kartu informasi dan elemen visual sederhana.
+                        </p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>Layout</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
-
 
     <!-- HOBI -->
-    <section class="hobi-section" id="hobi">
-        <h2>Hobi Saya</h2>
+    <section class="section hobbies-section">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="section-label">DI LUAR KODE</p>
+                <h2>Hal yang saya sukai</h2>
+            </div>
 
-        <table class="hobi-table">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Hobi</th>
-                    <th>Keterangan</th>
-                </tr>
-            </thead>
+            <div class="hobbies-grid">
+                <div class="hobby-item reveal">
+                    <span>📚</span>
+                    <h3>Belajar</h3>
+                    <p>Mempelajari hal baru setiap hari.</p>
+                </div>
 
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Bermain Game</td>
-                    <td>Untuk hiburan dan mengisi waktu luang.</td>
-                </tr>
+                <div class="hobby-item reveal">
+                    <span>💻</span>
+                    <h3>Ngoding</h3>
+                    <p>Membuat dan mencoba proyek website.</p>
+                </div>
 
-                <tr>
-                    <td>2</td>
-                    <td>Membaca Buku</td>
-                    <td>Untuk menambah wawasan dan pengetahuan.</td>
-                </tr>
+                <div class="hobby-item reveal">
+                    <span>🎨</span>
+                    <h3>Desain</h3>
+                    <p>Mencari inspirasi tampilan yang menarik.</p>
+                </div>
 
-                <tr>
-                    <td>3</td>
-                    <td>Olahraga</td>
-                    <td>Untuk menjaga kesehatan dan kebugaran.</td>
-                </tr>
-            </tbody>
-        </table>
+                <div class="hobby-item reveal">
+                    <span>🎧</span>
+                    <h3>Musik</h3>
+                    <p>Menikmati musik saat bersantai.</p>
+                </div>
+            </div>
+        </div>
     </section>
-
 
     <!-- KONTAK -->
-    <section class="kontak" id="kontak">
-        <h2>Kontak Saya</h2>
+    <section class="section contact-section" id="kontak">
+        <div class="container">
+            <div class="contact-box reveal">
+                <div class="contact-information">
+                    <p class="section-label">KONTAK</p>
+                    <h2>Mari terhubung dengan saya</h2>
+                    <p>
+                        Jika ingin berdiskusi, bekerja sama, atau sekadar
+                        menyapa, silakan hubungi saya melalui kontak berikut.
+                    </p>
 
-        <p class="kontak-text">
-            Jika ingin menghubungi saya, silakan melalui kontak
-            di bawah ini.
-        </p>
+                    <div class="contact-list">
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="contact-item">
+                            <span class="contact-icon">◎</span>
+                            <div>
+                                <small>Instagram</small>
+                                <strong>@saifullah_248</strong>
+                            </div>
+                        </a>
 
-        <div class="kontak-container">
-
-            <a
-                class="kontak-card instagram"
-                href="https://www.instagram.com/saifullah_248"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span class="kontak-icon">📷</span>
-
-                <div>
-                    <h3>Instagram</h3>
-                    <p>@saifullah_248</p>
+                        <a href="https://wa.me/6285815086925" target="_blank" rel="noopener noreferrer" class="contact-item">
+                            <span class="contact-icon">◉</span>
+                            <div>
+                                <small>WhatsApp</small>
+                                <strong>Chat melalui WhatsApp</strong>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </a>
 
+                <form class="contact-form" id="formKontak">
+                    <h3>Kirim pesan</h3>
 
-            <a
-                class="kontak-card whatsapp"
-                href="https://wa.me/6285815086925"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span class="kontak-icon">💬</span>
+                    <label for="namaInput">Nama</label>
+                    <input
+                        type="text"
+                        id="namaInput"
+                        placeholder="Masukkan nama Anda"
+                        required
+                    >
 
-                <div>
-                    <h3>WhatsApp</h3>
-                    <p>Chat dengan saya</p>
-                </div>
-            </a>
+                    <label for="emailInput">Email</label>
+                    <input
+                        type="email"
+                        id="emailInput"
+                        placeholder="Masukkan email Anda"
+                        required
+                    >
 
+                    <label for="pesanInput">Pesan</label>
+                    <textarea
+                        id="pesanInput"
+                        rows="5"
+                        placeholder="Tulis pesan Anda..."
+                        required
+                    ></textarea>
+
+                    <button type="submit" class="button primary-button submit-button">
+                        Kirim Pesan
+                        <span>→</span>
+                    </button>
+
+                    <p class="form-message" id="formMessage"></p>
+                </form>
+            </div>
         </div>
-
-
-        <!-- FORM -->
-        <form id="formKontak">
-
-            <input
-                type="text"
-                id="namaInput"
-                placeholder="Masukkan nama kamu"
-                required
-            >
-
-            <button type="submit">
-                Kirim
-            </button>
-
-        </form>
     </section>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <a href="#beranda" class="logo">
+                Saif<span>.</span>
+            </a>
 
-    <!-- Menghubungkan file JavaScript -->
+            <p>
+                © <span id="year"></span> Saif Gyiyats Al Khair.
+                Dari Sulawesi Tenggara.
+            </p>
+
+            <a href="#beranda" class="back-to-top">↑</a>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
-
 </body>
 </html>
